@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<events>
+  <event>
+    <title>Фестиваль искусств</title>
+    <description>Выставка современных картин и скульптур</description>
+    <date>2025-06-10</date>
+    <location>Московский музей изобразительных искусств</location>
+    <organizer>Музей современного искусства</organizer>
+  </event>
+  <event>
+    <title>Концерт рока</title>
+    <description>Выступление рок-группы “Группа крови”</description>
+    <date>2025-07-15</date>
+    <location>Крокус Сити Холл</location>
+    <organizer>Московский концертный зал</organizer>
+  </event>
+</events>

@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}Просмотр файлов и БД{% endblock %}
+
+{% block content %}
+<h2>Просмотр данных</h2>
+
+<!-- Переключатель: файлы или БД -->
+<ul class="nav nav-tabs mb-4">
+    <li class="nav-item">
+        <a class="nav-link active" href="#files" data-bs-toggle="tab">Файлы JSON/XML</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#database" data-bs-toggle="tab">База данных</a>
+    </li>
+</ul>
+
+<div class="tab-content">
+    <!-- Файлы -->
+    <div class="tab-pane active" id="files">
+        {% if json_files or xml_files %}
+            <h4>Содержимое JSON файлов</h4>
+            {% for file in json_files %}
+                <div class="card mb-3">
+                    <div class="card-header bg-secondary text-white">{{ file.name }}</div>
+                    <div class="card-body">
+                        <pre class="bg-light p-2 rounded">{{ file.data|pprint }}</pre>
+                    </div>
+                </div>
+            {% endfor %}
+
+            <h4>Содержимое XML файлов</h4>
+            {% for file in xml_files %}
+                <div class="card mb-3">
+                    <div class="card-header bg-secondary text-white">{{ file.name }}</div>
+                    <div class="card-body">
+                        <pre class="bg-light p-2 rounded">{{ file.data|pprint }}</pre>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="alert alert-info text-center">
+                <i class="bi bi-info-circle"></i> 
+                Нет загруженных файлов.
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- БД -->
+    <div class="tab-pane" id="database">
+        <a href="{% url 'events:view_db' %}" class="btn btn-primary">Перейти к БД</a>
+    </div>
+</div>
+{% endblock %}

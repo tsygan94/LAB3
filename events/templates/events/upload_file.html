@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Загрузить файл{% endblock %}
+
+{% block content %}
+<h2>Загрузить файл с мероприятиями</h2>
+<p>Поддерживаются форматы: <code>.json</code> и <code>.xml</code></p>
+<form method="post" enctype="multipart/form-data" class="row g-3">
+    {% csrf_token %}
+    <div class="col-6">
+        <label for="file" class="form-label">Выберите файл</label>
+        <input type="file" class="form-control" id="file" name="file" accept=".json,.xml" required>
+    </div>
+    <div class="col-6">
+        <button type="submit" class="btn btn-success mt-4">Загрузить</button>
+    </div>
+</form>
+{% endblock %}

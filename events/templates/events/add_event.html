@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}Добавить мероприятие{% endblock %}
+
+{% block content %}
+<h2>Добавить новое мероприятие</h2>
+<form method="post" class="row g-3">
+    {% csrf_token %}
+    <div class="col-md-6">
+        <label for="title" class="form-label">Название</label>
+        <input type="text" class="form-control" id="title" name="title" required>
+    </div>
+    <div class="col-md-6">
+        <label for="date" class="form-label">Дата (ГГГГ-ММ-ДД)</label>
+        <input type="date" class="form-control" id="date" name="date" required>
+    </div>
+    <div class="col-12">
+        <label for="location" class="form-label">Место</label>
+        <input type="text" class="form-control" id="location" name="location" required>
+    </div>
+    <div class="col-12">
+        <label for="organizer" class="form-label">Организатор</label>
+        <input type="text" class="form-control" id="organizer" name="organizer" required>
+    </div>
+    <div class="col-12">
+        <label for="description" class="form-label">Описание</label>
+        <textarea class="form-control" id="description" name="description" rows="4" required></textarea>
+    </div>
+    <div class="col-12">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="save_to_db" name="save_to_db" value="1">
+            <label class="form-check-label" for="save_to_db">Сохранить в базу данных</label>
+        </div>
+    </div>
+    <div class="col-12">
+        <label for="format" class="form-label">Формат сохранения файла</label>
+        <select class="form-select" id="format" name="format">
+            <option value="json">JSON</option>
+            <option value="xml">XML</option>
+            <option value="none">Только в БД (не сохранять в файл)</option>
+        </select>
+    </div>
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary">Сохранить</button>
+    </div>
+</form>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}Доска праздничных мероприятий{% endblock %}
+
+{% block content %}
+<div class="p-5 mb-4 bg-light rounded-3 text-center">
+    <div class="container-fluid py-5">
+        <h1 class="display-4">Доска праздничных мероприятий</h1>
+        <p class="lead">Добавляйте, загружайте и просматривайте информацию о праздничных мероприятиях</p>
+    </div>
+</div>
+
+<div class="d-flex justify-content-center gap-3 mb-4 flex-wrap">
+    <a href="{% url 'events:add_event' %}" class="btn btn-primary btn-lg">Добавить мероприятие</a>
+    <a href="{% url 'events:upload_file' %}" class="btn btn-success btn-lg">Загрузить файл</a>
+    <a href="{% url 'events:view_files' %}" class="btn btn-info btn-lg">Просмотр файлов</a>
+</div>
+
+<h2>Актуальные мероприятия</h2>
+{% if all_events %}
+    <table class="table table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>Название</th>
+                <th>Дата</th>
+                <th>Место</th>
+                <th>Организатор</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for event in all_events %}
+                <tr>
+                    <td>{{ event.title }}</td>
+                    <td>{{ event.date }}</td>
+                    <td>{{ event.location }}</td>
+                    <td>{{ event.organizer }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <div class="alert alert-info text-center">Нет мероприятий для отображения.</div>
+{% endif %}
+{% endblock %}
